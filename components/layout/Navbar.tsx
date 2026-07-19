@@ -60,6 +60,7 @@ export default function Navbar() {
                 src="/logo.png"
                 alt="UNIK Cookies"
                 fill
+                sizes="140px"
                 className="object-cover"
                 style={{
                   objectPosition: "center",

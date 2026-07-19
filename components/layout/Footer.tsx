@@ -44,6 +44,7 @@ export default function Footer() {
                   src="/logo.png"
                   alt="UNIK Cookies"
                   fill
+                  sizes="160px"
                   className="object-cover"
                   style={{ objectPosition: "center left" }}
                 />

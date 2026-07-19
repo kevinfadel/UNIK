@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 90],
   },
   async headers() {
     return [
@@ -38,7 +39,7 @@ const nextConfig: NextConfig = {
             // Un CSP de base qui permet le fonctionnement de Next.js, tout en bloquant les ressources inattendues.
             // On autorise inline-scripts et eval car framer-motion / Next.js en ont souvent besoin en dev, 
             // idéalement en prod on le renforcerait via des nonces.
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-src 'self' https://www.tiktok.com;",
           },
         ],
       },
