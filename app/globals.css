@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme ─── */
+@theme {
+  /* Brand Colors */
+  --color-noir: #111111;
+  --color-creme: #F8F5EF;
+  --color-chocolat: #6F4123;
+  --color-caramel: #B47A3B;
+  --color-sable: #E5D2B0;
+  --color-sable-light: #F0E5CC;
+  --color-caramel-light: #C99050;
+  --color-caramel-dark: #8A5228;
+  --color-muted: #8A7A6A;
+
+  /* Fonts */
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-18px) rotate(2deg); }
+    66% { transform: translateY(-8px) rotate(-1deg); }
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+:root {
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --ease-premium: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: #F8F5EF;
+  color: #111111;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F8F5EF; }
+::-webkit-scrollbar-thumb { background: #B47A3B; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #6F4123; }
+
+/* ─── Selection ─── */
+::selection { background-color: #B47A3B; color: #F8F5EF; }
+
+/* ─── Typography Utilities ─── */
+.font-display { font-family: var(--font-playfair); }
+.font-body { font-family: var(--font-inter); }
+
+.text-display-xl {
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.text-display-lg {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.text-display-md {
+  font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.text-display-sm {
+  font-size: clamp(1.4rem, 2.5vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Scroll Progress ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #6F4123, #B47A3B);
+  z-index: 9999;
+  transform-origin: left;
+}
+
+/* ─── Glassmorphism ─── */
+.glass {
+  background: rgba(248, 245, 239, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(229, 210, 176, 0.3);
+}
+.glass-dark {
+  background: rgba(17, 17, 17, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ─── Buttons ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #111111;
+  color: #F8F5EF;
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid transparent;
+  transition: all 0.35s var(--ease-premium);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #6F4123, #B47A3B);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #111111;
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid #111111;
+  transition: all 0.35s var(--ease-premium);
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-outline:hover { background: #111111; color: #F8F5EF; }
+
+.btn-caramel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #B47A3B, #6F4123);
+  color: #F8F5EF;
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  border: none;
+  transition: all 0.35s var(--ease-premium);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(180, 122, 59, 0.35);
+  text-decoration: none;
+}
+.btn-caramel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(180, 122, 59, 0.5);
+}
+
+/* ─── Layout ─── */
+.section-padding {
+  padding-top: clamp(5rem, 10vw, 10rem);
+  padding-bottom: clamp(5rem, 10vw, 10rem);
+}
+.container-custom {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 5rem);
+}
+
+/* ─── Components ─── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  color: #B47A3B;
+  background: rgba(180, 122, 59, 0.1);
+  border: 1px solid rgba(180, 122, 59, 0.2);
+  font-family: var(--font-inter);
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #B47A3B, #6F4123);
+  border-radius: 9999px;
+  margin: 1.25rem auto;
+}
+
+.stars { display: flex; gap: 0.2rem; color: #B47A3B; }
+
+/* ─── Accordion ─── */
+.accordion-item { border-bottom: 1px solid #E5D2B0; }
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  text-align: left;
+  font-family: var(--font-playfair);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111111;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.accordion-trigger:hover { color: #B47A3B; }
+.accordion-content { overflow: hidden; }
+
+/* ─── Marquee ─── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* ─── WhatsApp Float ─── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9000;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s var(--ease-bounce), box-shadow 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+}
+
+/* ─── Animations ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-18px) rotate(2deg); }
+  66% { transform: translateY(-8px) rotate(-1deg); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float 9s ease-in-out infinite; }
+.animate-marquee { animation: marquee 30s linear infinite; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  body { cursor: auto; }
+}
+
+/* ─── Focus Accessibility ─── */
+:focus-visible {
+  outline: 2px solid #B47A3B;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
